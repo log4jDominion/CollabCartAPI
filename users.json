@@ -1,11 +1,12 @@
 [ {
-  "userName" : "Saanya Dhir",
-  "emailId" : "saanya@umd.edu",
-  "password" : "qwerty",
-  "type" : "influencer"
-}, {
   "userName" : "Binny Chopra",
   "emailId" : "binny@umd.edu",
   "password" : "qwerty",
-  "type" : "influencer"
+  "type" : "influencer",
+  "description" : "I'm a tech influencer",
+  "category" : "Tech",
+  "followers" : 702850,
+  "averageViews" : 529125869,
+  "insights" : [ "Empowering the next-gen devs with open source and coffee.", "Exploring the future of AI, one project at a time." ],
+  "campaigns" : null
 } ]
