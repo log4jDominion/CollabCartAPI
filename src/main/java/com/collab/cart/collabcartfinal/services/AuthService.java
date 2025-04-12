@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -47,13 +48,13 @@ public class AuthService {
 
     public UserModel validateLogin(String username, String password) {
         try {
-            InputStream inputStream = getClass().getResourceAsStream("/users.json");
+            InputStream inputStream = new FileInputStream(FILE_PATH);
             List<UserModel> users = mapper.readValue(inputStream, new TypeReference<>() {});
             Optional<UserModel> optional =  users.stream()
                     .filter(u -> u.getEmailId().equals(username) && u.getPassword().equals(password))
                     .findFirst();
 
-            return optional.get();
+            return optional.orElse(null);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

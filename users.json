@@ -1,0 +1,11 @@
+[ {
+  "userName" : "Saanya Dhir",
+  "emailId" : "saanya@umd.edu",
+  "password" : "qwerty",
+  "type" : "influencer"
+}, {
+  "userName" : "Binny Chopra",
+  "emailId" : "binny@umd.edu",
+  "password" : "qwerty",
+  "type" : "influencer"
+} ]
