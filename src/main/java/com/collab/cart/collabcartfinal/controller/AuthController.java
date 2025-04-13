@@ -2,7 +2,6 @@ package com.collab.cart.collabcartfinal.controller;
 
 import com.collab.cart.collabcartfinal.models.UserModel;
 import com.collab.cart.collabcartfinal.services.AuthService;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
