@@ -16,22 +16,32 @@ public class CreateCampaignService {
     private static final String FILE_PATH = "campaign.json";
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-    // Load all campaigns from JSON
+    // Load all campaigns from the JSON file
     private List<Campaign> loadCampaigns() throws IOException {
         File file = new File(FILE_PATH);
-        if (file.exists()) {
-            return objectMapper.readValue(file, new TypeReference<>() {});
-        } else {
+
+        // If the file doesn't exist, create it with an empty JSON array
+        if (!file.exists()) {
+            file.createNewFile();
+            objectMapper.writeValue(file, new ArrayList<Campaign>());
             return new ArrayList<>();
         }
+
+        // If the file is empty, return an empty list
+        if (file.length() == 0) {
+            return new ArrayList<>();
+        }
+
+        // Otherwise, read the existing list from the file
+        return objectMapper.readValue(file, new TypeReference<>() {});
     }
 
-    // Create a new campaign and persist it
+    // Save a new campaign to the JSON file
     public boolean createCampaign(Campaign newCampaign) throws IOException {
         List<Campaign> campaigns = loadCampaigns();
-
-        // Add campaign and save
         campaigns.add(newCampaign);
+
+        System.out.println("Saving campaign to: " + new File(FILE_PATH).getAbsolutePath());
         objectMapper.writerWithDefaultPrettyPrinter().writeValue(new File(FILE_PATH), campaigns);
 
         return true;
