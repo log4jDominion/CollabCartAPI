@@ -5,4 +5,11 @@
   "companySize" : "11-50",
   "description" : "A creative marketing agency.",
   "location" : "New York"
+}, {
+  "companyName" : "Ashok Leyland",
+  "website" : "https://ashok.com",
+  "industry" : "Farming",
+  "companySize" : "100-500",
+  "description" : "A creative farming agency.",
+  "location" : "Punjab"
 } ]
