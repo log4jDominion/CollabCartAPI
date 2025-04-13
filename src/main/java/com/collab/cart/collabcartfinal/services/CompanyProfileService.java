@@ -19,11 +19,18 @@ public class CompanyProfileService {
     // Load all company profiles from JSON
     private List<CompanyProfile> loadProfiles() throws IOException {
         File file = new File(FILE_PATH);
-        if (file.exists()) {
-            return mapper.readValue(file, new TypeReference<>() {});
-        } else {
+
+        if (!file.exists()) {
+            file.createNewFile();
+            mapper.writeValue(file, new ArrayList<CompanyProfile>());
             return new ArrayList<>();
         }
+
+        if (file.length() == 0) {
+            return new ArrayList<>();
+        }
+
+        return mapper.readValue(file, new TypeReference<>() {});
     }
 
     // Save a new company profile
@@ -31,7 +38,6 @@ public class CompanyProfileService {
         List<CompanyProfile> profiles = loadProfiles();
         profiles.add(profile);
         mapper.writerWithDefaultPrettyPrinter().writeValue(new File(FILE_PATH), profiles);
-
         return true;
     }
 }

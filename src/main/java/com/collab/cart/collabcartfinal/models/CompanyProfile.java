@@ -2,9 +2,10 @@ package com.collab.cart.collabcartfinal.models;
 
 public class CompanyProfile {
     public String companyName;
-    public String companyDescription;
-    public String companyEmailId;
-    public String companyWebsite;
-    public String companyLocation;
+    public String website;
+    public String industry;
     public String companySize;
+    public String description;
+    public String location;
+
 }
